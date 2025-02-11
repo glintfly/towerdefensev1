@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tower Defense Game</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTTXRNyyf4kx9NmI7o1gO0dxqX5K9YEU6G8C0Xqg3zEym9D8ogUSfj/3hwI8RlD5aov+H3+Nqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f4f1de, #eae2b7);
+      color: #3d405b;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px 0;
+      background: linear-gradient(135deg, #e07a5f, #c74e39);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    /* Keyframes for header animation */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .nav-btn {
+      background-color: #81b29a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 1rem;
+    }
+
+    .nav-btn:hover {
+      background-color: #6a9c8a;
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Fade transition for content pages */
+    .content-page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-color: #f2cc8f;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .content-page.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Content Pages Headings */
+    .content-page h2 {
+      color: #3d405b;
+      margin-bottom: 10px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .content-page p {
+      color: #3d405b;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+      color: #3d405b;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1><i class="fas fa-shield-alt"></i> Tower Defense Game</h1>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button class="nav-btn" onclick="showPage('game')">Game</button>
+      <button class="nav-btn" onclick="showPage('leaderboard')">Leaderboard</button>
+      <button class="nav-btn" onclick="showPage('instructions')">Instructions</button>
+      <button class="nav-btn" onclick="showPage('about')">About</button>
+      <button class="nav-btn" onclick="showPage('credits')">Credits</button>
+    </div>
+
+    <!-- Game Area -->
+    <div class="game-area">
+      <iframe 
+        src="https://codepen.io/Eli-ZOu/project/full/ZbLxdR" 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        style="border:2px solid #c74e39; border-radius:15px;"
+        title="Orbitron Tower Defense">
+      </iframe>
+    </div>
+    
+
+    <!-- Leaderboard Page -->
+    <div id="leaderboard" class="content-page">
+      <h2>Leaderboard</h2>
+      <p>Top Players:</p>
+      <ol>
+        <li>Player 1 - 1000 points</li>
+        <li>Player 2 - 950 points</li>
+        <li>Player 3 - 900 points</li>
+      </ol>
+      <p><small><em>Note: Leaderboard is a placeholder, when I realease the game there will be actual players</em></small></p>
+    </div>
+
+    <!-- Instructions Page -->
+    <div id="instructions" class="content-page">
+      <h2>How to Play</h2>
+      <ol>
+        <li>Place towers along the path to stop enemies.</li>
+        <li>Earn gold by defeating enemies.</li>
+        <li>Upgrade towers between waves.</li>
+        <li>Survive all waves to win!</li>
+      </ol>
+      <p><small><em>Note: While not mine, the game is very simple, but my goal was to make it a lot more complicated sadly nothing went to plan</em></small></p>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="content-page">
+      <h2>About</h2>
+      <p>Hello!</p>
+      <br>
+      <p>This is a simple tower defense website I created for a school project. So far I Havent gotten to making the actual game yet but I hope the website design is well liked.</p>
+      <p>my goal with this project is to create a game I'm proud of, and so this entire website will most likely be revamped. I really havent had much time to work on this with a lot of things happening outside of school</p>
+      <p>I've missed a lot of days during this trimester of the school year and it's led me to be in a constant struggle to try and keep up, with me nearing finals and still having tests to make up. sadly all the classes I chose were fast paced so alas I'm just doing my best to keep up</p>
+      <p>With all of that being said I am very happy you are checking out my project, assuming I release it for testing and people to enjoy</p>
+    </div>
+    
+    <div id="credits" class="content-page">
+      <h1>Credits</h1>
+      <p>THE TOWER DEFENSE IS NOT CREATED BY ME. IT IS A PLACEHOLDER SINCE I WASNT ABLE TO CREATE MY OWN AND WANTED SOMETHING TO BE AT LEAST THERE</p>
+      <br>
+      <p>AUTHOR CAN BE FOUND AT THE TOP OF THE GAME SCREEN PLEASE FOLLOW HIM</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>&copy; 2025 Tower Defense Game :)</p>
+    </div>
+  </div>
+
+
+  <!-- Audio element (personal voice over)-->
+   <audio id="hover-sound1" src="audios/Gamee.mp3"> </audio>
+   <audio id="hover-sound2" src="audios/Leaderboardd.mp3"> </audio>
+   <audio id="hover-sound3" src="audios/Instructions.mp3"> </audio>
+    <audio id="hover-sound4" src="audios/aboutt.mp3"> </audio>
+    <audio id="hover-sound5" src="audios/creditts.mp3"> </audio>
+
+  <script>
+    // Show the selected page with a fade-in effect
+    function showPage(pageId) {
+      document.querySelectorAll('.content-page').forEach(page => {
+        page.classList.remove('show');
+      });
+      const page = document.getElementById(pageId);
+      page.classList.add('show');
+    }
+
+    // Get the audio elements
+    const hoversound1 = document.getElementById('hover-sound1');
+    const hoversound2 = document.getElementById('hover-sound2');
+    const hoversound3 = document.getElementById('hover-sound3');
+    const hoversound4 = document.getElementById('hover-sound4');
+    const hoversound5 = document.getElementById('hover-sound5');
+
+    // Add event listeners to the navigation buttons
+    const hoverSounds = [
+      document.getElementById('hover-sound1'),
+      document.getElementById('hover-sound2'),
+      document.getElementById('hover-sound3'),
+      document.getElementById('hover-sound4'),
+      document.getElementById('hover-sound5')
+    ];
+
+    document.querySelectorAll('.nav-btn').forEach((button, index) => {
+      button.addEventListener('mouseover', () => {
+        hoverSounds[index].currentTime = 0;
+        hoverSounds[index].play();
+      });
+
+      button.addEventListener('mouseleave', () => {
+        hoverSounds[index].pause();
+      });
+    });
+
+    // Simple Tower Defense Game Logic
+    const canvas = document.getElementById('game-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Draw a placeholder for the game
+    ctx.fillStyle = '#f4f1de';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#3d405b';
+    ctx.font = '30px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('Tower Defense Game', canvas.width / 2, canvas.height / 2);
+  </script>
+</body>
+</html>
